@@ -1,0 +1,84 @@
+---
+import certificates from '../data/certificates.json';
+
+// Default sorting (ascending by category)
+const sortedCertificates = certificates.sort((a, b) => a.category.localeCompare(b.category));
+---
+
+<div class="relative overflow-x-auto mt-17">
+    <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+        <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+            <tr>
+                <th scope="col" class="px-6 py-3">No</th>
+                <th scope="col" class="px-6 py-3 cursor-pointer select-none" id="sort-certificate">
+                    Certificate <span id="icon-certificate">⬆️</span>
+                </th>
+                <th scope="col" class="px-6 py-3 cursor-pointer select-none" id="sort-provider">
+                    Provider <span id="icon-provider">⬆️</span>
+                </th>
+                <th scope="col" class="px-6 py-3 cursor-pointer select-none" id="sort-category">
+                    Skills Category <span id="icon-category">⬆️</span>
+                </th>
+                <th scope="col" class="px-6 py-3">Link</th>
+            </tr>
+        </thead>
+        <tbody id="table-body">
+            {sortedCertificates.map((cert, index) => (
+                <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 border-gray-200">
+                    <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                        {index + 1}
+                    </th>
+                    <td class="px-6 py-4">{cert.name}</td>
+                    <td class="px-6 py-4">{cert.provider}</td>
+                    <td class="px-6 py-4">{cert.category}</td>
+                    <td class="px-6 py-4">
+                        <a href={cert.link} target="_blank">
+                            <button type="button" class="text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700">
+                                Certificate Link
+                            </button>
+                        </a>
+                    </td>
+                </tr>
+            ))}
+        </tbody>
+    </table>
+</div>
+
+<script>
+    type SortKey = "certificate" | "provider" | "category";
+  
+    const tableBody = document.getElementById("table-body");
+    if (!tableBody) throw new Error("Table body not found");
+  
+    const columns: { id: string; key: SortKey; index: number; iconId: string }[] = [
+      { id: "sort-certificate", key: "certificate", index: 1, iconId: "icon-certificate" },
+      { id: "sort-provider", key: "provider", index: 2, iconId: "icon-provider" },
+      { id: "sort-category", key: "category", index: 3, iconId: "icon-category" }
+    ];
+  
+    const sortDirections: Record<SortKey, boolean> = { certificate: true, provider: true, category: true };
+  
+    columns.forEach(({ id, key, index, iconId }) => {
+      const columnHeader = document.getElementById(id);
+      const icon = document.getElementById(iconId);
+  
+      if (!columnHeader || !icon) return; // ✅ Prevents 'null' errors
+  
+      columnHeader.addEventListener("click", () => {
+        sortDirections[key] = !sortDirections[key];
+  
+        let rows = Array.from(tableBody!.children) as HTMLTableRowElement[];
+        rows.sort((a, b) => {
+          let valA = a.children[index].textContent?.trim() || "";
+          let valB = b.children[index].textContent?.trim() || "";
+          return sortDirections[key] ? valA.localeCompare(valB) : valB.localeCompare(valA);
+        });
+  
+        tableBody.innerHTML = "";
+        rows.forEach(row => tableBody!.appendChild(row));
+  
+        icon.textContent = sortDirections[key] ? "⬆️" : "⬇️";
+      });
+    });
+  </script>
+  
