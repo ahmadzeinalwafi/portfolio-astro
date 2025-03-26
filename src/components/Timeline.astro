@@ -1,40 +1,79 @@
-<div class="py-8 mx-auto justify-items-center" id="story">
-    <ol class="relative border-s border-gray-200 dark:border-gray-700 my-15">                  
-        <li class="mb-10 ms-6">            
-            <span class="absolute flex items-center justify-center w-6 h-6 bg-blue-100 rounded-full -start-3 ring-8 ring-white dark:ring-gray-900 dark:bg-blue-900">
-                <svg class="w-2.5 h-2.5 text-blue-800 dark:text-blue-300" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
-                    <path d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z"/>
-                </svg>
+---
+interface TimelineEvent {
+  title: string;
+  date: string;
+  description: string[];
+  isCurrent?: boolean;
+}
+
+const timeline: TimelineEvent[] = [
+  {
+    title: "External Reviewer/Contributor at Dicoding Indonesia",
+    date: "From June 2024",
+    description: [
+      "I have had the opportunity to guide and support aspiring engineers as they navigate their journey through the Machine Learning Engineer Path. From foundational concepts to advanced implementations, I have reviewed numerous projects, offering constructive feedback to help learners refine their skills and improve their problem-solving approaches. Additionally, my involvement extends to reviewing beginner-level projects in Data Science, Front-End Development, and Google Cloud. ",
+      "Beyond technical evaluations, I have taken on roles as an Advisor, Instructor, and Mentor in various Dicoding programs, including Bangkit, LaskarAI, and Coding Camp. These experiences have allowed me to not only share knowledge but also foster meaningful connections with learners, guiding them toward industry best practices and career growth."
+    ],
+    isCurrent: true,
+  },
+  {
+    title: "Machine Learning Operations Architect at Global Data Inspirasi and UNNES Project",
+    date: "August 2024 - December 2024",
+    description: [
+      "As the architect behind the ecosystem design of SPARKA: Smart Parking Monitoring System for Smart Campus UNNES, I have played a key role in shaping its infrastructure to support seamless, efficient, and scalable operations. My work involves designing a robust ecosystem that integrates various machine learning components, ensuring optimal performance for real-time vehicle detection and parking space monitoring. By leveraging microservice concepts, I have built a modular, scalable, and easily deployable machine learning platform, enabling smooth integration across different environments while maintaining high availability and fault tolerance."
+    ],
+  },
+  {
+    title: "Technical Lead at Global Data Inspirasi Project",
+    date: "August 2023 - January 2024",
+    description: [
+      "I am deeply involved in designing and shaping integrated technology solutions to drive smart tourism development. By leveraging a combination of robotics, artificial intelligence, and web-based systems, I aim to create an ecosystem that enhances visitor experiences, improves operational efficiency, and supports data-driven decision-making for tourism stakeholders. My approach focuses on seamless integration, ensuring that different technological components work harmoniously to provide innovative and practical solutions for modern tourism challenges.",
+      "In addition to system design, I take on a leadership role in guiding and managing the development of technology-driven product solutions for smart tourism. This includes overseeing the entire lifecycle of product development—from conceptualization and prototyping to deployment and optimization. By fostering collaboration among engineers, designers, and domain experts, I ensure that our solutions are not only technologically advanced but also user-centric, scalable, and impactful for real-world tourism applications."
+    ],
+  },
+  {
+    title: "Machine Learning Solution Architect Intern at Global Data Inspirasi and UNNES Project",
+    date: "February 2023 - July 2023",
+    description: [
+      "I am actively involved in designing real-time monitoring systems for Smart Tourism, utilizing computer vision and AI technologies to enhance visitor insights and improve tourism management. By integrating advanced capabilities such as age, gender, and emotion detection, these systems provide valuable data that can be used to personalize experiences, optimize crowd management, and support data-driven decision-making for tourism operators. To ensure seamless access to this information, I have also developed a API and backend system that enables real-time data retrieval and processing, allowing stakeholders to monitor and analyze visitor patterns effortlessly. Through this work, I aim to create smarter, more responsive tourism environments that enhance both operational efficiency and visitor engagement."
+    ],
+  },
+  {
+    title: "IoT Engineer and Technician at Best Garment",
+    date: "August 2022 - December 2022",
+    description: [
+      "I am actively involved in developing an IoT device that enables real-time monitoring of garment truck conditions, helping improve logistics efficiency and operational visibility. In addition, I am exploring and learning about the machine pipeline within the garment machine industry, gaining insights into how different stages of production can be optimized using various technology. As part of this effort, I am also contributing to the design of a washing garment machine for revitalization, ensuring that it meets modern efficiency standards while integrating innovative features for improved performance."
+    ],
+  },
+];
+---
+
+<div class="py-12 px-6 mx-auto flex justify-center w-4/5" id="story">
+  <ol class="relative border-s border-gray-200 dark:border-gray-700 my-15 space-y-10"> 
+    {timeline.map((event) => (
+      <li class="ms-6">            
+        <span class="absolute flex items-center justify-center w-6 h-6 bg-blue-100 rounded-full -start-3 ring-8 ring-white dark:ring-gray-900 dark:bg-blue-900">
+          <svg class="w-2.5 h-2.5 text-blue-800 dark:text-blue-300" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+            <path d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z"/>
+          </svg>
+        </span>
+        <h3 class="flex items-center mb-2 text-lg font-semibold text-gray-900 dark:text-white">
+          {event.title}
+          {event.isCurrent && (
+            <span class="bg-blue-100 text-blue-800 text-sm font-medium px-2.5 py-0.5 rounded-sm dark:bg-blue-900 dark:text-blue-300 ms-3">
+              Currently
             </span>
-            <h3 class="flex items-center mb-1 text-lg font-semibold text-gray-900 dark:text-white">Flowbite Application UI v2.0.0 <span class="bg-blue-100 text-blue-800 text-sm font-medium me-2 px-2.5 py-0.5 rounded-sm dark:bg-blue-900 dark:text-blue-300 ms-3">Latest</span></h3>
-            <time class="block mb-2 text-sm font-normal leading-none text-gray-400 dark:text-gray-500">Released on January 13th, 2022</time>
-            <p class="mb-4 text-base font-normal text-gray-500 dark:text-gray-400">Get access to over 20+ pages including a dashboard layout, charts, kanban board, calendar, and pre-order E-commerce & Marketing pages.</p>
-            <a href="#" class="inline-flex items-center px-4 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:outline-none focus:ring-gray-100 focus:text-blue-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700 dark:focus:ring-gray-700"><svg class="w-3.5 h-3.5 me-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
-        <path d="M14.707 7.793a1 1 0 0 0-1.414 0L11 10.086V1.5a1 1 0 0 0-2 0v8.586L6.707 7.793a1 1 0 1 0-1.414 1.414l4 4a1 1 0 0 0 1.416 0l4-4a1 1 0 0 0-.002-1.414Z"/>
-        <path d="M18 12h-2.55l-2.975 2.975a3.5 3.5 0 0 1-4.95 0L4.55 12H2a2 2 0 0 0-2 2v4a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-4a2 2 0 0 0-2-2Zm-3 5a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"/>
-      </svg> Download ZIP</a>
-        </li>
-        <li class="mb-10 ms-6">
-            <span class="absolute flex items-center justify-center w-6 h-6 bg-blue-100 rounded-full -start-3 ring-8 ring-white dark:ring-gray-900 dark:bg-blue-900">
-                <svg class="w-2.5 h-2.5 text-blue-800 dark:text-blue-300" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
-                    <path d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z"/>
-                </svg>
-            </span>
-            <h3 class="mb-1 text-lg font-semibold text-gray-900 dark:text-white">Flowbite Figma v1.3.0</h3>
-            <time class="block mb-2 text-sm font-normal leading-none text-gray-400 dark:text-gray-500">Released on December 7th, 2021</time>
-            <p class="text-base font-normal text-gray-500 dark:text-gray-400">All of the pages and components are first designed in Figma and we keep a parity between the two versions even as we update the project.</p>
-        </li>
-        <li class="ms-6">
-            <span class="absolute flex items-center justify-center w-6 h-6 bg-blue-100 rounded-full -start-3 ring-8 ring-white dark:ring-gray-900 dark:bg-blue-900">
-                <svg class="w-2.5 h-2.5 text-blue-800 dark:text-blue-300" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
-                    <path d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z"/>
-                </svg>
-            </span>
-            <h3 class="mb-1 text-lg font-semibold text-gray-900 dark:text-white">Flowbite Library v1.2.2</h3>
-            <time class="block mb-2 text-sm font-normal leading-none text-gray-400 dark:text-gray-500">Released on December 2nd, 2021</time>
-            <p class="text-base font-normal text-gray-500 dark:text-gray-400">Get started with dozens of web components and interactive elements built on top of Tailwind CSS.</p>
-        </li>
-    </ol>
-    
-    
+          )}
+        </h3>
+        <time class="block mb-2 text-sm font-normal leading-none text-gray-400 dark:text-gray-500">
+          {event.date}
+        </time>
+        {event.description.map((paragraph, index) => (
+          <p class="text-base font-normal text-gray-500 dark:text-gray-400 max-w-256 mb-2 text-justify">
+            {paragraph}
+          </p>
+        ))}
+      </li>
+    ))}
+  </ol>
 </div>

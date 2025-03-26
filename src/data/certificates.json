@@ -1,31 +1,27 @@
 [
     {
-      "no": 1,
       "name": "Learn Kotlin Basic",
       "provider": "Dicoding",
       "category": "DevOps",
       "link": "#"
     },
     {
-      "no": 1,
       "name": "Learn Kotlin Basic",
       "provider": "Dicoding",
       "category": "FE",
       "link": "#"
     },
     {
-      "no": 1,
       "name": "Learn Kotlin Basic",
       "provider": "Dicoding",
       "category": "DevOps",
       "link": "#"
     },
     {
-      "no": 2,
       "name": "Machine Learning Specialization",
       "provider": "Coursera",
       "category": "AI/ML",
       "link": "#"
     }
-  ]
+]
   
