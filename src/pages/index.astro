@@ -1,5 +1,4 @@
 ---
-import Card from '../components/Card.astro';
 import Navbar from '../components/Navbar.astro'
 import Layout from '../layouts/Layout.astro';
 import Timeline from '../components/Timeline.astro'
@@ -11,9 +10,6 @@ import TechStack from '../components/TechStack.astro'
 import Article from '../components/Article.astro';
 import MiniMenu from '../components/MiniMenu.astro';
 
-
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
 ---
 
 <Layout>
@@ -26,3 +22,44 @@ import MiniMenu from '../components/MiniMenu.astro';
 	<Footer />
 	<MiniMenu />
 </Layout>
+<script>
+
+    document.addEventListener("DOMContentLoaded", function () {
+        if (!sessionStorage.getItem("introShown")) {
+        // if (true) {
+            introJs().setOptions({
+				scrollToElement: false,
+                disableInteraction: true,
+				tooltipClass: 'custom-intro-tooltip',
+                steps: [
+                    {
+                        element: document.querySelector("#navbar-sticky"),
+                        intro: "Here you can navigate to various page of this website"
+                    },
+                    {
+                        element: document.querySelector("#disabled-navbar"),
+                        intro: "But, be careful there are page that aren't developed yet"
+                    },
+                    {
+                        element: document.querySelector("#resume-button"),
+                        intro: "Here if you want to download my resume"
+                    },
+                    {
+                        element: document.querySelector("#mini-menu"),
+                        intro: "Here is the mini map of this page"
+                    },
+                    {
+                        intro: "That it, you can explore now!"
+                    },
+                ]
+            }).oncomplete(function () {
+                sessionStorage.setItem("introShown", "true");
+            }).onexit(function () {
+                sessionStorage.setItem("introShown", "true");
+            }).start();
+        }
+    });
+        
+</script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/intro.js/7.2.0/intro.js" integrity="sha512-f26fxKZJiF0AjutUaQHNJ5KnXSisqyUQ3oyfaoen2apB1wLa5ccW3lmtaRe2jdP5kh4LF2gAHP9xQbx7wYhU5w==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
