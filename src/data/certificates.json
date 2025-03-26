@@ -1,27 +1,315 @@
 [
-    {
-      "name": "Learn Kotlin Basic",
+
+  {
+      "name": "Belajar Strategi Pengembangan Diri",
+      "provider": "Dicoding",
+      "category": "Soft Skill",
+      "link": "https://www.dicoding.com/certificates/NVP74Y96OPR0"
+  },
+  {
+      "name": "Belajar Dasar AI",
+      "provider": "Dicoding",
+      "category": "Digital Literacy",
+      "link": "https://www.dicoding.com/certificates/1OP8WM5K1XQK"
+  },
+  {
+      "name": "Belajar Fundamental Aplikasi Back-End",
+      "provider": "Dicoding",
+      "category": "Back End",
+      "link": "https://www.dicoding.com/certificates/JLX17JL85X72"
+  },
+  {
+      "name": "Belajar Penerapan Data Science",
+      "provider": "Dicoding",
+      "category": "Data Science",
+      "link": "https://www.dicoding.com/certificates/NVP7Q692GZR0"
+  },
+  {
+      "name": "Menjadi Front-End Web Developer Expert",
+      "provider": "Dicoding",
+      "category": "Front End",
+      "link": "https://www.dicoding.com/certificates/4EXGQ89DGZRL"
+  },
+  {
+      "name": "Menjadi Node.js Application Developer",
+      "provider": "Dicoding",
+      "category": "Back End",
+      "link": "https://www.dicoding.com/certificates/N9ZOMQ4V8PG5"
+  },
+  {
+      "name": "Belajar Dasar UX Design",
+      "provider": "Dicoding",
+      "category": "Digital Literacy",
+      "link": "https://www.dicoding.com/certificates/JMZV38N7RPN9"
+  },
+  {
+      "name": "Belajar Fundamental Aplikasi Web dengan React",
+      "provider": "Dicoding",
+      "category": "React",
+      "link": "https://www.dicoding.com/certificates/MRZMEO43RPYQ"
+  },
+  {
+      "name": "Belajar Pemrograman Prosedural dengan Python",
+      "provider": "Dicoding",
+      "category": "General Programming",
+      "link": "https://www.dicoding.com/certificates/53XEO9JR9ZRN"
+  },
+  {
+      "name": "Belajar Tools Front-End Web Intermediate",
+      "provider": "Dicoding",
+      "category": "Front End",
+      "link": "https://www.dicoding.com/certificates/07Z60MG9YZQR"
+  },
+  {
+      "name": "Memulai Pemrograman dengan Haskell",
+      "provider": "Dicoding",
+      "category": "General Programming",
+      "link": "https://www.dicoding.com/certificates/GRX5OM983P0M"
+  },
+  {
+      "name": "Menjadi React Web Developer Expert",
+      "provider": "Dicoding",
+      "category": "React",
+      "link": "https://www.dicoding.com/certificates/98XWLY4NWZM3"
+  },
+  {
+      "name": "Belajar Membuat Aplikasi Flutter untuk Pemula",
+      "provider": "Dicoding",
+      "category": "Mobile Development",
+      "link": "https://www.dicoding.com/certificates/L4PQ176LOXO1"
+  },
+  {
+      "name": "Belajar Prinsip Pemrograman SOLID",
+      "provider": "Dicoding",
+      "category": "General Programming",
+      "link": "https://www.dicoding.com/certificates/EYX4VM95OZDL"
+  },
+  {
+      "name": "Memulai Pemrograman dengan Dart",
+      "provider": "Dicoding",
+      "category": "General Programming",
+      "link": "https://www.dicoding.com/certificates/0LZ06MG80Z65"
+  },
+  {
+      "name": "Belajar Analisis Data dengan Python",
+      "provider": "Dicoding",
+      "category": "Data Science",
+      "link": "https://www.dicoding.com/certificates/98XWLY4EJZM3"
+  },
+  {
+      "name": "Belajar Dasar Data Science",
+      "provider": "Dicoding",
+      "category": "Data Science",
+      "link": "https://www.dicoding.com/certificates/QLZ97G2VMP5D"
+  },
+  {
+      "name": "Belajar Dasar Git dengan GitHub",
+      "provider": "Dicoding",
+      "category": "General Programming",
+      "link": "https://www.dicoding.com/certificates/2VX3RMYKNZYQ"
+  },
+  {
+      "name": "Belajar Dasar Structured Query Language (SQL)",
+      "provider": "Dicoding",
+      "category": "General Programming",
+      "link": "https://www.dicoding.com/certificates/1RXYL3OVMPVM"
+  },
+  {
+      "name": "Belajar Fundamental Front-End Web Development",
+      "provider": "Dicoding",
+      "category": "Front End",
+      "link": "https://www.dicoding.com/certificates/N9ZOMQ4JRPG5"
+  },
+  {
+      "name": "Belajar Implementasi CI/CD",
       "provider": "Dicoding",
       "category": "DevOps",
-      "link": "#"
-    },
-    {
-      "name": "Learn Kotlin Basic",
-      "provider": "Dicoding",
-      "category": "FE",
-      "link": "#"
-    },
-    {
-      "name": "Learn Kotlin Basic",
+      "link": "https://www.dicoding.com/certificates/NVP7Q696RZR0"
+  },
+  {
+      "name": "Belajar Membangun Arsitektur Microservices",
       "provider": "Dicoding",
       "category": "DevOps",
-      "link": "#"
-    },
-    {
-      "name": "Machine Learning Specialization",
-      "provider": "Coursera",
-      "category": "AI/ML",
-      "link": "#"
-    }
-]
-  
+      "link": "https://www.dicoding.com/certificates/JLX17JLE2X72"
+  },
+  {
+      "name": "Belajar Membuat Aplikasi Android dengan Jetpack Compose",
+      "provider": "Dicoding",
+      "category": "Mobile Development",
+      "link": "https://www.dicoding.com/certificates/1OP8WM5ELXQK"
+  },
+  {
+      "name": "Belajar Membuat Front-End Web untuk Pemula",
+      "provider": "Dicoding",
+      "category": "Front End",
+      "link": "https://www.dicoding.com/certificates/JMZV38N8JPN9"
+  },
+  {
+      "name": "Machine Learning Operation (MLOps)",
+      "provider": "Dicoding",
+      "category": "Machine Learning",
+      "link": "https://www.dicoding.com/certificates/N9ZOMLWG6PG5"
+  },
+  {
+      "name": "Meniti Karier sebagai Software Developer",
+      "provider": "Dicoding",
+      "category": "Digital Literacy",
+      "link": "https://www.dicoding.com/certificates/MRZMEO4NLPYQ"
+  },
+  {
+      "name": "Menjadi Google Cloud Architect",
+      "provider": "Dicoding",
+      "category": "Cloud Computing",
+      "link": "https://www.dicoding.com/certificates/KEXL1V9V4XG2"
+  },
+  {
+      "name": "Menjadi Google Cloud Engineer",
+      "provider": "Dicoding",
+      "category": "Cloud Computing",
+      "link": "https://www.dicoding.com/certificates/98XWLY4Q9ZM3"
+  },
+  {
+      "name": "Menjadi Linux System Administrator",
+      "provider": "Dicoding",
+      "category": "DevOps",
+      "link": "https://www.dicoding.com/certificates/L4PQ17657XO1"
+  },
+  {
+      "name": "Belajar Dasar Google Cloud",
+      "provider": "Dicoding",
+      "category": "Cloud Computing",
+      "link": "https://www.dicoding.com/certificates/1RXYL3OL9PVM"
+  },
+  {
+      "name": "Belajar Dasar Manajemen Proyek",
+      "provider": "Dicoding",
+      "category": "Soft Skill",
+      "link": "https://www.dicoding.com/certificates/JLX17JL2NX72"
+  },
+  {
+      "name": "Belajar Membuat Aplikasi Android untuk Pemula",
+      "provider": "Dicoding",
+      "category": "Mobile Development",
+      "link": "https://www.dicoding.com/certificates/N9ZOMQ4MYPG5"
+  },
+  {
+      "name": "Belajar Membuat Aplikasi Back-End untuk Pemula dengan Google Cloud",
+      "provider": "Dicoding",
+      "category": "Back End",
+      "link": "https://www.dicoding.com/certificates/EYX4VM9J6ZDL"
+  },
+  {
+      "name": "Memulai Dasar Pemrograman untuk Menjadi Pengembang Software",
+      "provider": "Dicoding",
+      "category": "Digital Literacy",
+      "link": "https://www.dicoding.com/certificates/4EXGQ89Q9ZRL"
+  },
+  {
+      "name": "Memulai Pemrograman dengan Kotlin",
+      "provider": "Dicoding",
+      "category": "General Programming",
+      "link": "https://www.dicoding.com/certificates/81P2NM84QXOY"
+  },
+  {
+      "name": "Pengenalan ke Logika Pemrograman (Programming Logic 101)",
+      "provider": "Dicoding",
+      "category": "Digital Literacy",
+      "link": "https://www.dicoding.com/certificates/6RPN10619X2M"
+  },
+  {
+      "name": "Belajar Jaringan Komputer untuk Pemula",
+      "provider": "Dicoding",
+      "category": "DevOps",
+      "link": "https://www.dicoding.com/certificates/1OP8WM5N8XQK"
+  },
+  {
+      "name": "Machine Learning Terapan",
+      "provider": "Dicoding",
+      "category": "Machine Learning",
+      "link": "https://www.dicoding.com/certificates/QLZ97G289P5D"
+  },
+  {
+      "name": "Belajar Dasar-Dasar DevOps",
+      "provider": "Dicoding",
+      "category": "DevOps",
+      "link": "https://www.dicoding.com/certificates/NVP7Q697WZR0"
+  },
+  {
+      "name": "Belajar Pengembangan Machine Learning",
+      "provider": "Dicoding",
+      "category": "Machine Learning",
+      "link": "https://www.dicoding.com/certificates/JMZV38ND3PN9"
+  },
+  {
+      "name": "Belajar Machine Learning untuk Pemula",
+      "provider": "Dicoding",
+      "category": "Machine Learning",
+      "link": "https://www.dicoding.com/certificates/GRX5OM92VP0M"
+  },
+  {
+      "name": "Memulai Pemrograman dengan Python",
+      "provider": "Dicoding",
+      "category": "General Programming",
+      "link": "https://www.dicoding.com/certificates/98XWLY4V0ZM3"
+  },
+  {
+      "name": "Kursus Command Line",
+      "provider": "Progate",
+      "category": "General Programming",
+      "link": "https://progate.com/course_certificate/b2a1daa5qj3n6e"
+  },
+  {
+      "name": "Kursus Git",
+      "provider": "Progate",
+      "category": "General Programming",
+      "link": "https://progate.com/course_certificate/d14dd670qj3vlc"
+  },
+  {
+      "name": "Kursus Python",
+      "provider": "Progate",
+      "category": "General Programming",
+      "link": "https://progate.com/course_certificate/164df49bqj4u53"
+  },
+  {
+      "name": "Kursus SQL",
+      "provider": "Progate",
+      "category": "General Programming",
+      "link": "https://progate.com/course_certificate/26a832dfqj3up7"
+  },
+  {
+      "name": "Architecting on AWS (Membangun Arsitektur Cloud di AWS)",
+      "provider": "Dicoding",
+      "category": "Cloud Computing",
+      "link": "https://www.dicoding.com/certificates/RVZK1L77NPD5"
+  },
+  {
+      "name": "Belajar Dasar Pemrograman Web",
+      "provider": "Dicoding",
+      "category": "Front End",
+      "link": "https://www.dicoding.com/certificates/ERZR4KDD2ZYV"
+  },
+  {
+      "name": "Belajar Dasar Pemrograman JavaScript",
+      "provider": "Dicoding",
+      "category": "General Programming",
+      "link": "https://www.dicoding.com/certificates/JMZVML0NQZN9"
+  },
+  {
+      "name": "Belajar Membuat Aplikasi Back-End untuk Pemula",
+      "provider": "Dicoding",
+      "category": "Back End",
+      "link": "https://www.dicoding.com/certificates/N9ZODLMLRPG5"
+  },
+  {
+      "name": "Belajar Membuat Aplikasi Web dengan React",
+      "provider": "Dicoding",
+      "category": "React",
+      "link": "https://www.dicoding.com/certificates/98XWL7RYWZM3"
+  },
+  {
+      "name": "Cloud Practitioner Essentials (Belajar Dasar AWS Cloud)",
+      "provider": "Dicoding",
+      "category": "Cloud Computing",
+      "link": "https://www.dicoding.com/certificates/72ZDE7DD6PYW"
+  }
+ ]
