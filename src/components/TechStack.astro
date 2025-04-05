@@ -4,84 +4,71 @@ import frontend from '../assets/frontend.png';
 import microservice from '../assets/microservice.png';
 import mlops from '../assets/mlops.png';
 import react from '../assets/react.png';
-import tensorflowlogo from '../assets/tensorflowlogo.png'
-import reactlogo from '../assets/reactlogo.png'
-import pythonlogo from '../assets/pythonlogo.png'
-import javascriptlogo from '../assets/javascriptlogo.png'
-import gologo from '../assets/gologo.png'
-import gcplogo from '../assets/gcplogo.png'
+import tensorflowlogo from '../assets/tensorflowlogo.png';
+import reactlogo from '../assets/reactlogo.png';
+import pythonlogo from '../assets/pythonlogo.png';
+import javascriptlogo from '../assets/javascriptlogo.png';
+import gologo from '../assets/gologo.png';
+import gcplogo from '../assets/gcplogo.png';
 
+const carouselImages = [architect, frontend, microservice, mlops, react];
+const logos = [tensorflowlogo, reactlogo, pythonlogo, javascriptlogo, gologo, gcplogo];
 ---
+
 <section class="bg-white py-8 antialiased dark:bg-gray-900 md:py-16">
-    <div class="mx-auto grid max-w-screen-xl px-4 pb-8 md:grid-cols-12 lg:gap-12 lg:pb-16 xl:gap-0">
-      <div class="content-center justify-self-start md:col-span-7 md:text-start">
-        <h1 class="mb-4 text-4xl font-extrabold leading-none tracking-tight dark:text-white md:max-w-2xl md:text-5xl xl:text-5xl">Diverse IT Skills</h1>
-        <h1 class="mb-4 text-4xl font-extrabold leading-none tracking-tight dark:text-white md:max-w-2xl md:text-3xl xl:text-4xl">With Artifical Intelligence Specialization</h1>
-        <p class="mb-4 max-w-2xl text-gray-500 dark:text-gray-400 md:mb-12 md:text-lg lg:mb-5 lg:text-xl">Passionate about crafting intelligent and scalable technology solutions, I specialize in AI-driven software architecture, bridging cutting-edge research with real-world applications. With a strong foundation in machine learning, cloud computing, and IoT, I design and implement robust systems that power automation, data-driven decision-making, and real-time processing. Beyond technical expertise, I excel in technology leadership, software development lifecycle management, and cross-functional collaboration—ensuring that innovation aligns with business goals. Whether building smart applications, optimizing system performance, or leading teams toward strategic technology adoption, I thrive on transforming ideas into impactful solutions.</p>
-      </div>
-      <div class="hidden md:col-span-5 md:mt-0 md:flex z-0">
-        <div id="gallery" class="relative w-full" data-carousel="slide">
-            <!-- Carousel wrapper -->
-            <div class="relative h-56 overflow-hidden rounded-lg md:h-96">
-                 <!-- Item 1 -->
-                <div class="hidden duration-700 ease-in-out" data-carousel-item>
-                    <img src={architect.src} alt="">
-                </div>
-                <!-- Item 2 -->
-                <div class="hidden duration-700 ease-in-out" data-carousel-item="active">
-                    <img src={frontend.src} alt="">
-                </div>
-                <!-- Item 3 -->
-                <div class="hidden duration-700 ease-in-out" data-carousel-item>
-                    <img src={microservice.src}  alt="">
-                </div>
-                <!-- Item 4 -->
-                <div class="hidden duration-700 ease-in-out" data-carousel-item>
-                    <img src={mlops.src}  alt="">
-                </div>
-                <!-- Item 5 -->
-                <div class="hidden duration-700 ease-in-out" data-carousel-item>
-                    <img src={react.src} alt="">
-                </div>
-            </div>
-            <!-- Slider controls -->
-            <button type="button" class="absolute top-0 start-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none" data-carousel-prev>
-                <span class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
-                    <svg class="w-4 h-4 text-white dark:text-gray-800 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
-                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 1 1 5l4 4"/>
-                    </svg>
-                    <span class="sr-only">Previous</span>
-                </span>
-            </button>
-            <button type="button" class="absolute top-0 end-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none" data-carousel-next>
-                <span class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
-                    <svg class="w-4 h-4 text-white dark:text-gray-800 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
-                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 9 4-4-4-4"/>
-                    </svg>
-                    <span class="sr-only">Next</span>
-                </span>
-            </button>
+  <div class="mx-auto grid max-w-screen-xl px-4 pb-8 md:grid-cols-12 lg:gap-12 lg:pb-16 xl:gap-0">
+    <div class="content-center justify-self-start md:col-span-7 md:text-start">
+      <h1 class="mb-4 text-4xl font-extrabold leading-none tracking-tight dark:text-white md:max-w-2xl md:text-5xl xl:text-5xl">
+        Diverse IT Skills
+      </h1>
+      <h1 class="mb-4 text-4xl font-extrabold leading-none tracking-tight dark:text-white md:max-w-2xl md:text-3xl xl:text-4xl">
+        With Artificial Intelligence Specialization
+      </h1>
+      <p class="mb-4 max-w-2xl text-gray-500 dark:text-gray-400 md:mb-12 md:text-lg lg:mb-5 lg:text-xl">
+        Passionate about crafting intelligent and scalable technology solutions, I specialize in AI-driven software architecture, bridging cutting-edge research with real-world applications. With a strong foundation in machine learning, cloud computing, and IoT, I design and implement robust systems that power automation, data-driven decision-making, and real-time processing. Beyond technical expertise, I excel in technology leadership, software development lifecycle management, and cross-functional collaboration—ensuring that innovation aligns with business goals. Whether building smart applications, optimizing system performance, or leading teams toward strategic technology adoption, I thrive on transforming ideas into impactful solutions.
+      </p>
+    </div>
+    <div class="hidden md:col-span-5 md:mt-0 md:flex z-0">
+      <div id="gallery" class="relative w-full" data-carousel="slide">
+        <div class="relative h-56 overflow-hidden rounded-lg md:h-96">
+          {
+            carouselImages.map((image, index) => (
+              <div
+                class={`hidden duration-700 ease-in-out`}
+                data-carousel-item={index === 1 ? "active" : true}
+              >
+                <img src={image.src} alt={`Carousel ${index + 1}`} />
+              </div>
+            ))
+          }
         </div>
+        <button type="button" class="absolute top-0 start-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none" data-carousel-prev>
+          <span class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
+            <svg class="w-4 h-4 text-white dark:text-gray-800 rtl:rotate-180" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
+              <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 1 1 5l4 4" />
+            </svg>
+            <span class="sr-only">Previous</span>
+          </span>
+        </button>
+        <button type="button" class="absolute top-0 end-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none" data-carousel-next>
+          <span class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
+            <svg class="w-4 h-4 text-white dark:text-gray-800 rtl:rotate-180" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
+              <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 9 4-4-4-4" />
+            </svg>
+            <span class="sr-only">Next</span>
+          </span>
+        </button>
       </div>
     </div>
-    <div class="mx-auto grid max-w-screen-xl grid-cols-2 gap-8 text-gray-500 dark:text-gray-400 sm:grid-cols-3 sm:gap-12 lg:grid-cols-6 px-4">
-      <a href="#" class="flex items-center md:justify-center cursor-not-allowed pointer-events-none">
-        <img src={tensorflowlogo.src} class="h-8 hover:text-gray-900 dark:hover:text-white" alt="Logo" />
-      </a>
-      <a href="#" class="flex items-center md:justify-center cursor-not-allowed pointer-events-none">
-        <img src={reactlogo.src} class="h-8 hover:text-gray-900 dark:hover:text-white" alt="Logo" />
-      </a>
-      <a href="#" class="flex items-center md:justify-center cursor-not-allowed pointer-events-none">
-        <img src={pythonlogo.src} class="h-8 hover:text-gray-900 dark:hover:text-white" alt="Logo" />
-      </a>
-      <a href="#" class="flex items-center md:justify-center cursor-not-allowed pointer-events-none">
-        <img src={javascriptlogo.src} class="h-8 hover:text-gray-900 dark:hover:text-white" alt="Logo" />
-      </a>
-      <a href="#" class="flex items-center md:justify-center cursor-not-allowed pointer-events-none">
-        <img src={gologo.src} class="h-8 hover:text-gray-900 dark:hover:text-white" alt="Logo" />
-      </a>
-      <a href="#" class="flex items-center md:justify-center cursor-not-allowed pointer-events-none">
-        <img src={gcplogo.src} class="h-8 hover:text-gray-900 dark:hover:text-white" alt="Logo" />
-      </a>
-    </div>
-  </section>
+  </div>
+
+  <div class="mx-auto grid max-w-screen-xl grid-cols-2 gap-8 text-gray-500 dark:text-gray-400 sm:grid-cols-3 sm:gap-12 lg:grid-cols-6 px-4">
+    {
+      logos.map((logo, index) => (
+        <a href="#" class="flex items-center md:justify-center cursor-not-allowed pointer-events-none">
+          <img src={logo.src} class="h-8 hover:text-gray-900 dark:hover:text-white" alt={`Logo ${index + 1}`} />
+        </a>
+      ))
+    }
+  </div>
+</section>
