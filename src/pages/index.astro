@@ -31,6 +31,10 @@ import MiniMenu from '../components/MiniMenu.astro';
             introJs().setOptions({
 				scrollToElement: false,
                 disableInteraction: true,
+                showButtons: true,
+                keyboardNavigation: true, 
+                exitOnEsc: true,
+                exitOnOverlayClick: true,
 				tooltipClass: 'custom-intro-tooltip',
                 steps: [
                     {
