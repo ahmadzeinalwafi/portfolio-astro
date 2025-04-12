@@ -62,7 +62,7 @@ const sortedCertificates = certificates.sort((a, b) => a.category.localeCompare(
       const columnHeader = document.getElementById(id);
       const icon = document.getElementById(iconId);
   
-      if (!columnHeader || !icon) return; // ✅ Prevents 'null' errors
+      if (!columnHeader || !icon) return; // 
   
       columnHeader.addEventListener("click", () => {
         sortDirections[key] = !sortDirections[key];
