@@ -1,0 +1,11 @@
+---
+import CardProject from '../components/CardProjects.astro';
+import OpenProjectLayout from '../layouts/OpenProjectLayout.astro';
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+---
+<OpenProjectLayout>
+    <Navbar active={2} />
+    <CardProject />
+    <Footer darkBg="gray-900"/>
+</OpenProjectLayout>

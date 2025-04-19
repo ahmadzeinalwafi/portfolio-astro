@@ -1,0 +1,184 @@
+---
+const cardData = [
+  {
+    id: "card1",
+    tabs: [
+      {
+        id: "about",
+        title: "About",
+        selected: true,
+        content: {
+          heading: "Card 1: Empowering Businesses",
+          paragraph: "We enable teams to build faster with confidence, empowering them with tools and insights.",
+          link: { href: "#", text: "Discover more" }
+        }
+      },
+      {
+        id: "services",
+        title: "Services",
+        selected: false,
+        content: [
+          "Realtime analytics",
+          "Cloud-native infrastructure",
+          "Team collaboration",
+          "DevOps automation"
+        ]
+      },
+      {
+        id: "statistics",
+        title: "Stats",
+        selected: false,
+        content: [
+          "99.99% uptime",
+          "200k+ users",
+          "Fast deployment",
+          "Scalable architecture"
+        ]
+      }
+    ]
+  },
+  {
+    id: "card2",
+    tabs: [
+      {
+        id: "about",
+        title: "Overview",
+        selected: true,
+        content: {
+          heading: "Card 2: Unlocking Creativity",
+          paragraph: "Our platform helps creators turn ideas into reality through easy-to-use tools and support.",
+          link: { href: "#", text: "Get started" }
+        }
+      },
+      {
+        id: "services",
+        title: "Features",
+        selected: false,
+        content: [
+          "Drag & Drop Editor",
+          "Asset library",
+          "Real-time collaboration",
+          "Mobile-friendly tools"
+        ]
+      },
+      {
+        id: "statistics",
+        title: "Impact",
+        selected: false,
+        content: [
+          "50K projects created",
+          "Global reach",
+          "High retention rate",
+          "Award-winning design"
+        ]
+      }
+    ]
+  },
+  {
+    id: "card2",
+    tabs: [
+      {
+        id: "about",
+        title: "Overview",
+        selected: true,
+        content: {
+          heading: "Card 2: Unlocking Creativity",
+          paragraph: "Our platform helps creators turn ideas into reality through easy-to-use tools and support.",
+          link: { href: "#", text: "Get started" }
+        }
+      },
+      {
+        id: "services",
+        title: "Features",
+        selected: false,
+        content: [
+          "Drag & Drop Editor",
+          "Asset library",
+          "Real-time collaboration",
+          "Mobile-friendly tools"
+        ]
+      },
+      {
+        id: "statistics",
+        title: "Impact",
+        selected: false,
+        content: [
+          "50K projects created",
+          "Global reach",
+          "High retention rate",
+          "Award-winning design"
+        ]
+      }
+    ]
+  }
+];
+---
+<div class="mt-24">
+{cardData.map((card) => (
+  <div class="w-8/12 mx-auto my-10 bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700">
+    <!-- Tabs Header -->
+    <ul class="flex flex-wrap text-sm font-medium text-center text-gray-500 border-b border-gray-200 rounded-t-lg bg-gray-50 dark:border-gray-700 dark:text-gray-400 dark:bg-gray-800" id={`tabs-${card.id}`} data-tabs-toggle={`#tabsContent-${card.id}`} role="tablist">
+      {card.tabs.map((tab) => (
+        <li class="me-2">
+          <button
+            id={`${card.id}-${tab.id}-tab`}
+            data-tabs-target={`#${card.id}-${tab.id}`}
+            type="button"
+            role="tab"
+            aria-controls={`${card.id}-${tab.id}`}
+            aria-selected={tab.selected ? "true" : "false"}
+            class={`inline-block p-4 ${
+              tab.selected
+                ? "text-blue-600 rounded-ss-lg hover:bg-gray-100 dark:bg-gray-800 dark:hover:bg-gray-700 dark:text-blue-500"
+                : "hover:text-gray-600 hover:bg-gray-100 dark:hover:bg-gray-700 dark:hover:text-gray-300"
+            }`}
+          >
+            {tab.title}
+          </button>
+        </li>
+      ))}
+    </ul>
+
+    <!-- Tabs Content -->
+    <div id={`tabsContent-${card.id}`}>
+      {card.tabs.map((tab) => (
+        <div
+          class={`p-4 bg-white md:p-8 dark:bg-gray-800 ${tab.selected ? "" : "hidden"}`}
+          id={`${card.id}-${tab.id}`}
+          role="tabpanel"
+          aria-labelledby={`${card.id}-${tab.id}-tab`}
+        >
+          {typeof tab.content === "object" && !Array.isArray(tab.content) ? (
+            <>
+              <h2 class="mb-3 text-3xl font-extrabold tracking-tight text-gray-900 dark:text-white">{tab.content.heading}</h2>
+              <p class="mb-3 text-gray-500 dark:text-gray-400">{tab.content.paragraph}</p>
+              <a href={tab.content.link.href} class="inline-flex items-center font-medium text-blue-600 hover:text-blue-800 dark:text-blue-500 dark:hover:text-blue-700">
+                {tab.content.link.text}
+                <svg class="w-2.5 h-2.5 ms-2 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
+                  <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 9 4-4-4-4"/>
+                </svg>
+              </a>
+            </>
+          ) : (
+            <>
+              <h2 class="mb-5 text-2xl font-extrabold tracking-tight text-gray-900 dark:text-white">
+                {tab.title}
+              </h2>
+              <ul role="list" class="space-y-4 text-gray-500 dark:text-gray-400">
+                {tab.content.map((item) => (
+                  <li class="flex space-x-2 rtl:space-x-reverse items-center">
+                    <svg class="shrink-0 w-3.5 h-3.5 text-blue-600 dark:text-blue-500" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                      <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z"/>
+                    </svg>
+                    <span class="leading-tight">{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </>
+          )}
+        </div>
+      ))}
+    </div>
+  </div>
+))}
+</div>
