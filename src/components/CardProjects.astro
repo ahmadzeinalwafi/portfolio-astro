@@ -1,116 +1,123 @@
 ---
 const cardData = [
-  {
-    id: "card1",
+{
+    id: "pihace",
     tabs: [
       {
         id: "about",
         title: "About",
         selected: true,
         content: {
-          heading: "Card 1: Empowering Businesses",
-          paragraph: "We enable teams to build faster with confidence, empowering them with tools and insights.",
-          link: { href: "#", text: "Discover more" }
+          heading: "Python Integrated Health Check (pihace)",
+          paragraph: "Python Integrated Health Check (pihace) is a modular and extensible Python library for system and service health monitoring. It helps you build consistent, informative, and developer-friendly health check endpoints or tools across your applications and infrastructure.",
+          link: { href: "https://github.com/ahmadzeinalwafi/pihace", text: "Discover more" }
         }
       },
       {
-        id: "services",
-        title: "Services",
+        id: "features",
+        title: "Features",
         selected: false,
         content: [
-          "Realtime analytics",
-          "Cloud-native infrastructure",
-          "Team collaboration",
-          "DevOps automation"
+        "✅ Built-in system checks: CPU, memory, disk usage, Python version, OS",
+        "📦 Modular service checks: MySQL, MongoDB, InfluxDB, and more",
+        "🧩 Custom check functions",
+        "🧾 Unified health output format",
+        "🐍 Pythonic API design",
+        "🔧 Extensible with easy register() method",
         ]
       },
       {
-        id: "statistics",
-        title: "Stats",
+        id: "integration-support",
+        title: "Integration Support",
         selected: false,
         content: [
-          "99.99% uptime",
-          "200k+ users",
-          "Fast deployment",
-          "Scalable architecture"
+          "✅ MySQL",
+          "✅ MongoDB",
+          "✅ InfluxDB",
+          "🧩 Custom check functions"
         ]
       }
     ]
   },
   {
-    id: "card2",
+    id: "node-sphere-backend",
     tabs: [
       {
         id: "about",
-        title: "Overview",
+        title: "About",
         selected: true,
         content: {
-          heading: "Card 2: Unlocking Creativity",
-          paragraph: "Our platform helps creators turn ideas into reality through easy-to-use tools and support.",
-          link: { href: "#", text: "Get started" }
+          heading: "Node Sphere Back End",
+          paragraph: "Node Sphere Backend is a lightweight, scalable, and modular platform built to monitor, manage, and analyze IoT devices in real time. It provides a robust backend architecture with clean separation of concerns, seamless health monitoring, and integrations with popular messaging and time-series systems.",
+          link: { href: "https://github.com/ahmadzeinalwafi/embbeded-sensor-dms-backend", text: "Discover more" }
         }
       },
       {
-        id: "services",
+        id: "features",
         title: "Features",
         selected: false,
         content: [
-          "Drag & Drop Editor",
-          "Asset library",
-          "Real-time collaboration",
-          "Mobile-friendly tools"
+        "✅ Device registration & lifecycle management",
+        "📡 Real-time data ingestion via MQTT / HTTP",
+        "📊 Time-series storage with InfluxDB" ,
+        "🔍 Device metadata storage using MongoDB ",
+        "❤️ Health check system using health-go plugins" ,
+        "🧩 Modular, clean architecture with dependency injection" ,
+        "🔐 API-ready for secure device communication and frontend dashboards",
         ]
       },
       {
-        id: "statistics",
-        title: "Impact",
+        id: "technology",
+        title: "Technology",
         selected: false,
         content: [
-          "50K projects created",
-          "Global reach",
-          "High retention rate",
-          "Award-winning design"
+          "▶️ net/http",
+          "▶️ golang-jwt/jwt/v4",
+          "▶️ paho.mqtt.golang",
+          "▶️ go-playground/validator/v10",
+          "▶️ golang.org/x/crypto",
         ]
       }
     ]
   },
   {
-    id: "card2",
+    id: "node-sphere-frontend",
     tabs: [
       {
         id: "about",
-        title: "Overview",
+        title: "About",
         selected: true,
         content: {
-          heading: "Card 2: Unlocking Creativity",
-          paragraph: "Our platform helps creators turn ideas into reality through easy-to-use tools and support.",
-          link: { href: "#", text: "Get started" }
+          heading: "Node Sphere Front End",
+          paragraph: "Node Sphere Frontend is the user interface for the Node Sphere platform — a modern and modular dashboard designed to monitor and manage IoT devices in real-time. Built with Next.js, Tailwind CSS, and Atomic Design principles (more or less), this frontend delivers a seamless user experience for visualizing device status, data statistics, and historical data.",
+          link: { href: "https://node-sphere.vercel.app/", text: "Discover more" }
         }
       },
       {
-        id: "services",
+        id: "features",
         title: "Features",
         selected: false,
         content: [
-          "Drag & Drop Editor",
-          "Asset library",
-          "Real-time collaboration",
-          "Mobile-friendly tools"
+        "⚡ Real-time Device Monitoring — View device status, metrics, and historical data in real time.",
+        "📊 Charts and Graphs — Visualize IoT device metrics over time with beautiful charts.",
+        "🔒 User-Friendly Authentication — Easy login and session management with Next.js.",
+        "🧩 Modular Component — Modular and reusable components for a scalable design system.",
         ]
       },
       {
-        id: "statistics",
-        title: "Impact",
+        id: "technology",
+        title: "Technology",
         selected: false,
         content: [
-          "50K projects created",
-          "Global reach",
-          "High retention rate",
-          "Award-winning design"
+          "▶️ Next.js",
+          "▶️ Tailwind CSS",
+          "▶️ DaisyUI",
+          "▶️ @next/mdx",
+          "▶️ chart.js",
         ]
       }
     ]
-  }
+  },
 ];
 ---
 <div class="mt-24">
@@ -167,9 +174,6 @@ const cardData = [
               <ul role="list" class="space-y-4 text-gray-500 dark:text-gray-400">
                 {tab.content.map((item) => (
                   <li class="flex space-x-2 rtl:space-x-reverse items-center">
-                    <svg class="shrink-0 w-3.5 h-3.5 text-blue-600 dark:text-blue-500" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
-                      <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z"/>
-                    </svg>
                     <span class="leading-tight">{item}</span>
                   </li>
                 ))}
