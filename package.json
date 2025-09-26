@@ -9,6 +9,7 @@
     "astro": "astro"
   },
   "dependencies": {
+    "@astrojs/vercel": "^8.2.8",
     "@langchain/community": "^0.3.56",
     "@langchain/core": "^0.3.77",
     "@langchain/google-genai": "^0.2.18",
