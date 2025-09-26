@@ -311,5 +311,36 @@
       "provider": "Dicoding",
       "category": "Cloud Computing",
       "link": "https://www.dicoding.com/certificates/72ZDE7DD6PYW"
+  },
+
+  {
+      "name": "Belajar Penerapan Machine Learning untuk Android",
+      "provider": "Dicoding",
+      "category": "Mobile Development",
+      "link": "https://www.dicoding.com/certificates/1RXYQ45EQZVM"
+  },
+  {
+      "name": "Belajar Penerapan Machine Learning dengan Google Cloud",
+      "provider": "Dicoding",
+      "category": "Cloud Computing",
+      "link": "https://www.dicoding.com/certificates/QLZ968W37Z5D"
+  },
+  {
+      "name": "Belajar Fundamental Pemrosesan Data",
+      "provider": "Dicoding",
+      "category": "Data Science",
+      "link": "https://www.dicoding.com/certificates/NVP7JG05OXR0"
+  },
+  {
+      "name": "Belajar Back-End Pemula dengan Python",
+      "provider": "Dicoding",
+      "category": "Back End",
+      "link": "https://www.dicoding.com/certificates/0LZ05DKR3X65"
+  },
+  {
+      "name": "Membangun Sistem Machine Learning",
+      "provider": "Dicoding",
+      "category": "Machine Learning",
+      "link": "https://www.dicoding.com/certificates/KEXL7KYYWXG2"
   }
  ]

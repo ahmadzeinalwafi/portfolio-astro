@@ -1,5 +1,7 @@
 ---
 import cnn from '../assets/cnn.jpg'
+import liver from '../assets/liver.png'
+import xray from '../assets/xray.png'
 
 const cards = [
   {
@@ -7,12 +9,6 @@ const cards = [
     image: "https://miro.medium.com/v2/resize:fit:1100/format:webp/1*6jUK2lp-B6de6lsuMmVNTQ.jpeg",
     description: "How Redis Helps Me to Build Real-Time IoT-Based Robotics System",
     link: "https://medium.com/@ahmadzeinalwafi/how-redis-helps-me-to-build-real-time-iot-based-robotics-system-51a8b08e8c8d"
-  },
-  {
-    title: "Machine Learning System",
-    image: "https://miro.medium.com/v2/resize:fit:1100/format:webp/1*9jmZv1l3sznw0V_r8BqRew.jpeg",
-    description: "How Decoupling Machine Learning Inference System Improves Scalability and Availability",
-    link: "https://medium.com/@ahmadzeinalwafi/how-decoupling-machine-learning-inference-system-improves-scalability-and-availability-14b2cbc77cf5"
   },
   {
     title: "Software Instrumentation",
@@ -37,6 +33,24 @@ const cards = [
     image: "https://miro.medium.com/v2/resize:fit:1100/format:webp/1*7wqhfG97lE02wtmbxYgTYw.png",
     description: "How IT Audits Strengthen Stakeholder Relationships",
     link: "https://medium.com/@ahmadzeinalwafi/how-it-audits-strengthen-stakeholder-relationships-41e0e3b17c1f"
+  },
+  {
+    title: "Machine Learning System",
+    image: "https://miro.medium.com/v2/resize:fit:1100/format:webp/1*9jmZv1l3sznw0V_r8BqRew.jpeg",
+    description: "How Decoupling Machine Learning Inference System Improves Scalability and Availability",
+    link: "https://medium.com/@ahmadzeinalwafi/how-decoupling-machine-learning-inference-system-improves-scalability-and-availability-14b2cbc77cf5"
+  },
+  {
+    title: "Feature Processing Research",
+    image: xray.src,
+    description: "Investigating Liver Disease Machine Learning Prediction Performancethrough Various Feature Selection Methods",
+    link: "https://journal.universitasbumigora.ac.id/matrik/article/view/4531"
+  },
+  {
+    title: "Transfer Learning Research",
+    image: liver.src,
+    description: "Deep Learning Approach for Pneumonia Prediction from X-Rays using A Pretrained Densenet Model",
+    link: "https://medium.com/@ahmadzeinalwafi/how-it-audits-strengthen-stakeholder-relationships-41e0e3b17c1f"
   }
 ];
 ---
@@ -45,9 +59,9 @@ const cards = [
     <div class="py-8 px-4 mx-auto max-w-screen-xl lg:py-16 lg:px-6">
         <div class="mx-auto max-w-screen-md text-center mb-8 lg:mb-12">
             <h2 class="mb-4 text-4xl tracking-tight font-extrabold text-gray-900 dark:text-white">Where My Thoughts Found Words</h2>
-            <p class="mb-5 font-light text-gray-500 sm:text-xl dark:text-gray-400">Writing helps me understand what I think and where I'm going next</p>
+            <p class="mb-5 font-light text-gray-500 sm:text-xl dark:text-gray-400">An idea only lives as long as memory, but writing makes it timeless</p>
         </div>
-        <div class="lg:grid lg:grid-cols-3 sm:gap-6 xl:gap-10 lg:space-y-0">
+        <div class="lg:grid lg:grid-cols-4 sm:gap-6 xl:gap-10 lg:space-y-0">
             {cards.map((card) => (
               <div class="flex flex-col justify-center items-center p-6 mx-auto max-w-lg text-center text-gray-900 bg-white rounded-lg border border-gray-100 shadow dark:border-gray-600 xl:p-8 dark:bg-gray-800 dark:text-white h-full">
                 <h3 class="mb-4 text-2xl font-semibold">{card.title}</h3>
