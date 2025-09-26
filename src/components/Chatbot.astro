@@ -1,0 +1,148 @@
+---
+---
+<div class="fixed bottom-5 left-5 z-50">
+    <button id="chat-bubble" class="bg-blue-800 text-white rounded-full p-4 shadow-lg hover:bg-blue-900 transition duration-300">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+        </svg>
+    </button>
+
+    <div id="chat-window" class="hidden absolute bottom-20 left-0 w-80 sm:w-96 bg-gray-900 rounded-xl shadow-2xl flex flex-col transition-transform duration-300 transform h-[32rem]">
+        <div class="bg-blue-800 text-white p-4 rounded-t-xl flex justify-between items-center">
+            <h3 class="text-lg font-semibold">Q&A Assistant</h3>
+            <button id="close-chat" class="text-white hover:text-gray-200">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+            </button>
+        </div>
+
+        <div id="chat-messages" class="flex-1 p-4 overflow-y-auto">
+            </div>
+
+        <form id="chat-form" class="p-4 border-t border-gray-700">
+            <div class="flex items-center">
+                <input type="text" id="chat-input" placeholder="Type your message..." class="w-full px-3 py-2 bg-gray-800 border border-gray-600 text-gray-200 rounded-l-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 placeholder-gray-400" autocomplete="off">
+                <button type="submit" id="chat-submit-btn" class="bg-blue-800 text-white px-4 py-2 rounded-r-md hover:bg-blue-700 disabled:bg-blue-900 disabled:text-gray-500">Send</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script>
+    const chatBubble = document.getElementById('chat-bubble');
+    const chatWindow = document.getElementById('chat-window');
+    const closeChatBtn = document.getElementById('close-chat');
+    const chatForm = document.getElementById('chat-form');
+    const chatMessages = document.getElementById('chat-messages');
+
+    // FIXED: Assert the correct, specific types for the input and button elements.
+    const chatInput = document.getElementById('chat-input') as HTMLInputElement;
+    const chatSubmitBtn = document.getElementById('chat-submit-btn') as HTMLButtonElement;
+
+    // This check now correctly informs TypeScript that the elements are not null inside this block.
+    if (!chatBubble || !chatWindow || !closeChatBtn || !chatForm || !chatInput || !chatSubmitBtn || !chatMessages) {
+        console.error("Chatbot UI elements not found.");
+    } else {
+        let messageHistory = [{
+            role: 'ai',
+            content: "Hello! I'm an AI assistant designed to answer your questions about Ahmad Zein Al Wafi. I use Google's Gemini 2.0 Flash model and the information provided by Ahmad to help you find what you're looking for. Feel free to ask me about specific projects, skills, or professional experience of Ahmad Zein Al Wafi."
+        }];
+
+        const scrollToBottom = () => {
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        };
+
+        const renderMessages = () => {
+            chatMessages.innerHTML = '';
+            messageHistory.forEach(msg => {
+                const messageElement = document.createElement('div');
+                messageElement.classList.add('flex', 'mb-4');
+                
+                const contentElement = document.createElement('div');
+                contentElement.classList.add('rounded-lg', 'p-3', 'max-w-xs');
+                contentElement.textContent = msg.content;
+
+                if (msg.role === 'user') {
+                    messageElement.classList.add('justify-end');
+                    contentElement.classList.add('bg-blue-600', 'text-white');
+                } else {
+                    messageElement.classList.add('justify-start');
+                    contentElement.classList.add('bg-gray-700', 'text-gray-200');
+                }
+                messageElement.appendChild(contentElement);
+                chatMessages.appendChild(messageElement);
+            });
+            scrollToBottom();
+        };
+        
+        renderMessages();
+
+        const toggleChatWindow = () => chatWindow.classList.toggle('hidden');
+        chatBubble.addEventListener('click', toggleChatWindow);
+        closeChatBtn.addEventListener('click', toggleChatWindow);
+
+        chatForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            // All properties like .value and .disabled can now be accessed without errors.
+            const userInput = chatInput.value.trim();
+            if (!userInput) return;
+
+            chatInput.disabled = true;
+            chatSubmitBtn.disabled = true;
+
+            messageHistory.push({ role: 'user', content: userInput });
+            renderMessages();
+            chatInput.value = '';
+
+            const aiMessageContainer = document.createElement('div');
+            aiMessageContainer.classList.add('flex', 'mb-4', 'justify-start');
+            const aiMessageBubble = document.createElement('div');
+            aiMessageBubble.classList.add('rounded-lg', 'p-3', 'max-w-xs', 'bg-gray-700', 'text-gray-200');
+            aiMessageBubble.textContent = '...';
+            aiMessageContainer.appendChild(aiMessageBubble);
+            chatMessages.appendChild(aiMessageContainer);
+            scrollToBottom();
+
+            try {
+                // NOTE: Make sure your /api/chat endpoint is set up correctly in Astro.
+                const response = await fetch('/api/chat', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ history: messageHistory })
+                });
+
+                if (!response.ok || !response.body) {
+                    throw new Error(`API error: ${response.statusText}`);
+                }
+                
+                aiMessageBubble.textContent = '';
+                const reader = response.body.getReader();
+                const decoder = new TextDecoder();
+                let fullResponse = '';
+
+                while (true) {
+                    const { done, value } = await reader.read();
+                    if (done) break;
+
+                    const chunk = decoder.decode(value);
+                    fullResponse += chunk;
+                    aiMessageBubble.textContent = fullResponse;
+                    scrollToBottom();
+                }
+
+                messageHistory.push({ role: 'ai', content: fullResponse });
+
+            } catch (error) {
+                aiMessageBubble.textContent = 'Sorry, an error occurred. Please try again.';
+                aiMessageBubble.classList.remove('bg-gray-700', 'text-gray-200');
+                aiMessageBubble.classList.add('bg-red-800', 'text-red-200');
+                console.error(error);
+            } finally {
+                chatInput.disabled = false;
+                chatSubmitBtn.disabled = false;
+                chatInput.focus();
+            }
+        });
+    }
+</script>
