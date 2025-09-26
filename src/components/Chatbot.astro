@@ -1,13 +1,41 @@
 ---
 ---
+<style>
+    @keyframes pulse-dot {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(-3px); }
+    }
+    .animate-pulse-dot span:nth-child(1) { animation: pulse-dot 1.2s infinite ease-in-out; }
+    .animate-pulse-dot span:nth-child(2) { animation: pulse-dot 1.2s infinite ease-in-out 0.2s; }
+    .animate-pulse-dot span:nth-child(3) { animation: pulse-dot 1.2s infinite ease-in-out 0.4s; }
+
+    .chat-message-enter {
+        opacity: 0;
+        transform: translateY(10px);
+        transition: opacity 0.3s ease-out, transform 0.3s ease-out;
+    }
+    .chat-message-enter-active {
+        opacity: 1;
+        transform: translateY(0);
+    }
+</style>
+
+
 <div class="fixed bottom-5 left-5 z-50">
-    <button id="chat-bubble" class="bg-blue-800 text-white rounded-full p-4 shadow-lg hover:bg-blue-900 transition duration-300">
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
-        </svg>
+    <button id="chat-bubble" class="bg-blue-800 text-white rounded-full p-4 shadow-lg hover:bg-blue-900 transition-all duration-300 transform hover:scale-110 animate-bounce">
+        <div id="chat-icon-container" class="relative h-8 w-8 transition-transform duration-500 ease-in-out">
+            <svg id="chat-open-icon" xmlns="http://www.w3.org/2000/svg" class="absolute top-0 left-0 h-full w-full transition-opacity duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+            </svg>
+            <svg id="chat-close-icon" xmlns="http://www.w3.org/2000/svg" class="absolute top-0 left-0 h-full w-full opacity-0 transition-opacity duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+        </div>
     </button>
 
-    <div id="chat-window" class="hidden absolute bottom-20 left-0 w-80 sm:w-96 bg-gray-900 rounded-xl shadow-2xl flex flex-col transition-transform duration-300 transform h-[32rem]">
+    <div id="chat-window" class="absolute bottom-20 left-0 w-80 sm:w-96 bg-gray-900 rounded-xl shadow-2xl flex flex-col h-[32rem] 
+                                  transition-all duration-500 ease-in-out transform 
+                                  opacity-0 invisible translate-y-10">
         <div class="bg-blue-800 text-white p-4 rounded-t-xl flex justify-between items-center">
             <h3 class="text-lg font-semibold">Q&A Assistant</h3>
             <button id="close-chat" class="text-white hover:text-gray-200">
@@ -17,13 +45,13 @@
             </button>
         </div>
 
-        <div id="chat-messages" class="flex-1 p-4 overflow-y-auto">
+        <div id="chat-messages" class="flex-1 p-4 overflow-y-auto space-y-4">
             </div>
 
         <form id="chat-form" class="p-4 border-t border-gray-700">
             <div class="flex items-center">
                 <input type="text" id="chat-input" placeholder="Type your message..." class="w-full px-3 py-2 bg-gray-800 border border-gray-600 text-gray-200 rounded-l-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 placeholder-gray-400" autocomplete="off">
-                <button type="submit" id="chat-submit-btn" class="bg-blue-800 text-white px-4 py-2 rounded-r-md hover:bg-blue-700 disabled:bg-blue-900 disabled:text-gray-500">Send</button>
+                <button type="submit" id="chat-submit-btn" class="bg-blue-800 text-white px-4 py-2 rounded-r-md hover:bg-blue-700 disabled:bg-blue-900 disabled:text-gray-500 transition-colors">Send</button>
             </div>
         </form>
     </div>
@@ -35,77 +63,116 @@
     const closeChatBtn = document.getElementById('close-chat');
     const chatForm = document.getElementById('chat-form');
     const chatMessages = document.getElementById('chat-messages');
+    const chatIconContainer = document.getElementById('chat-icon-container');
+    const chatOpenIcon = document.getElementById('chat-open-icon');
+    const chatCloseIcon = document.getElementById('chat-close-icon');
 
-    // FIXED: Assert the correct, specific types for the input and button elements.
     const chatInput = document.getElementById('chat-input') as HTMLInputElement;
     const chatSubmitBtn = document.getElementById('chat-submit-btn') as HTMLButtonElement;
 
-    // This check now correctly informs TypeScript that the elements are not null inside this block.
-    if (!chatBubble || !chatWindow || !closeChatBtn || !chatForm || !chatInput || !chatSubmitBtn || !chatMessages) {
+    if (!chatBubble || !chatWindow || !closeChatBtn || !chatForm || !chatInput || !chatSubmitBtn || !chatMessages || !chatIconContainer || !chatOpenIcon || !chatCloseIcon) {
         console.error("Chatbot UI elements not found.");
     } else {
         let messageHistory = [{
             role: 'ai',
             content: "Hello! I'm an AI assistant designed to answer your questions about Ahmad Zein Al Wafi. I use Google's Gemini 2.0 Flash model and the information provided by Ahmad to help you find what you're looking for. Feel free to ask me about specific projects, skills, or professional experience of Ahmad Zein Al Wafi."
         }];
+        
+        let isChatOpen = false;
 
         const scrollToBottom = () => {
             chatMessages.scrollTop = chatMessages.scrollHeight;
         };
+        
+        const addMessage = (msg: { role: string; content: string; }, isInitial = false) => {
+            const messageElement = document.createElement('div');
+            messageElement.classList.add('flex', 'max-w-full');
+            
+            const contentElement = document.createElement('div');
+            contentElement.classList.add('rounded-lg', 'p-3', 'max-w-xs', 'break-words');
+            contentElement.textContent = msg.content;
 
-        const renderMessages = () => {
-            chatMessages.innerHTML = '';
-            messageHistory.forEach(msg => {
-                const messageElement = document.createElement('div');
-                messageElement.classList.add('flex', 'mb-4');
-                
-                const contentElement = document.createElement('div');
-                contentElement.classList.add('rounded-lg', 'p-3', 'max-w-xs');
-                contentElement.textContent = msg.content;
+            if (msg.role === 'user') {
+                messageElement.classList.add('justify-end');
+                contentElement.classList.add('bg-blue-600', 'text-white');
+            } else {
+                messageElement.classList.add('justify-start');
+                contentElement.classList.add('bg-gray-700', 'text-gray-200');
+            }
+            messageElement.appendChild(contentElement);
 
-                if (msg.role === 'user') {
-                    messageElement.classList.add('justify-end');
-                    contentElement.classList.add('bg-blue-600', 'text-white');
-                } else {
-                    messageElement.classList.add('justify-start');
-                    contentElement.classList.add('bg-gray-700', 'text-gray-200');
-                }
-                messageElement.appendChild(contentElement);
-                chatMessages.appendChild(messageElement);
-            });
+            if (!isInitial) {
+                // Add animation classes
+                messageElement.classList.add('chat-message-enter');
+            }
+
+            chatMessages.appendChild(messageElement);
+
+            if (!isInitial) {
+                setTimeout(() => {
+                    messageElement.classList.add('chat-message-enter-active');
+                }, 10);
+            }
+            
             scrollToBottom();
+            return messageElement;
+        };
+
+        const renderInitialMessages = () => {
+            chatMessages.innerHTML = '';
+            messageHistory.forEach(msg => addMessage(msg, true));
         };
         
-        renderMessages();
+        renderInitialMessages();
 
-        const toggleChatWindow = () => chatWindow.classList.toggle('hidden');
+        const toggleChatWindow = () => {
+            isChatOpen = !isChatOpen;
+            if (isChatOpen) {
+                chatWindow.classList.remove('opacity-0', 'invisible', 'translate-y-10');
+                chatIconContainer.style.transform = 'rotate(90deg)';
+                chatOpenIcon.classList.add('opacity-0');
+                chatCloseIcon.classList.remove('opacity-0');
+                chatBubble.classList.remove('animate-bounce');
+                chatInput.focus();
+            } else {
+                chatWindow.classList.add('opacity-0', 'invisible', 'translate-y-10');
+                chatIconContainer.style.transform = 'rotate(0deg)';
+                chatOpenIcon.classList.remove('opacity-0');
+                chatCloseIcon.classList.add('opacity-0');
+                chatBubble.classList.add('animate-bounce');
+            }
+        };
+
         chatBubble.addEventListener('click', toggleChatWindow);
         closeChatBtn.addEventListener('click', toggleChatWindow);
 
         chatForm.addEventListener('submit', async (e) => {
             e.preventDefault();
-            // All properties like .value and .disabled can now be accessed without errors.
             const userInput = chatInput.value.trim();
             if (!userInput) return;
 
             chatInput.disabled = true;
             chatSubmitBtn.disabled = true;
 
-            messageHistory.push({ role: 'user', content: userInput });
-            renderMessages();
+            const userMessage = { role: 'user', content: userInput };
+            messageHistory.push(userMessage);
+            addMessage(userMessage);
             chatInput.value = '';
 
-            const aiMessageContainer = document.createElement('div');
-            aiMessageContainer.classList.add('flex', 'mb-4', 'justify-start');
-            const aiMessageBubble = document.createElement('div');
-            aiMessageBubble.classList.add('rounded-lg', 'p-3', 'max-w-xs', 'bg-gray-700', 'text-gray-200');
-            aiMessageBubble.textContent = '...';
-            aiMessageContainer.appendChild(aiMessageBubble);
-            chatMessages.appendChild(aiMessageContainer);
+            const typingIndicatorContainer = document.createElement('div');
+            typingIndicatorContainer.classList.add('flex', 'mb-4', 'justify-start');
+            const typingIndicatorBubble = document.createElement('div');
+            typingIndicatorBubble.classList.add('rounded-lg', 'p-3', 'max-w-xs', 'bg-gray-700', 'text-gray-200', 'animate-pulse-dot', 'flex', 'items-center', 'space-x-1');
+            typingIndicatorBubble.innerHTML = `
+                <span class="h-2 w-2 bg-gray-400 rounded-full"></span>
+                <span class="h-2 w-2 bg-gray-400 rounded-full"></span>
+                <span class="h-2 w-2 bg-gray-400 rounded-full"></span>
+            `;
+            typingIndicatorContainer.appendChild(typingIndicatorBubble);
+            chatMessages.appendChild(typingIndicatorContainer);
             scrollToBottom();
 
             try {
-                // NOTE: Make sure your /api/chat endpoint is set up correctly in Astro.
                 const response = await fetch('/api/chat', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
@@ -115,8 +182,12 @@
                 if (!response.ok || !response.body) {
                     throw new Error(`API error: ${response.statusText}`);
                 }
+
+                typingIndicatorContainer.remove();
+
+                const aiMessageBubble = addMessage({ role: 'ai', content: '' });
+                const aiContentElement = aiMessageBubble.querySelector('div');
                 
-                aiMessageBubble.textContent = '';
                 const reader = response.body.getReader();
                 const decoder = new TextDecoder();
                 let fullResponse = '';
@@ -127,16 +198,19 @@
 
                     const chunk = decoder.decode(value);
                     fullResponse += chunk;
-                    aiMessageBubble.textContent = fullResponse;
+                    if (aiContentElement) {
+                       aiContentElement.textContent = fullResponse;
+                    }
                     scrollToBottom();
                 }
 
                 messageHistory.push({ role: 'ai', content: fullResponse });
 
             } catch (error) {
-                aiMessageBubble.textContent = 'Sorry, an error occurred. Please try again.';
-                aiMessageBubble.classList.remove('bg-gray-700', 'text-gray-200');
-                aiMessageBubble.classList.add('bg-red-800', 'text-red-200');
+                typingIndicatorContainer.remove();
+                const errorMsg = 'Sorry, an error occurred. Please try again.';
+                const errorBubble = addMessage({ role: 'ai', content: errorMsg });
+                errorBubble.querySelector('div')?.classList.replace('bg-gray-700', 'bg-red-800');
                 console.error(error);
             } finally {
                 chatInput.disabled = false;
